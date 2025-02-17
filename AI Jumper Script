@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AIJumper : MonoBehaviour
+{
+    public LayerMask ground;
+    public float jumpForce = 6.0f;
+
+    public AudioClip jumpSound;
+    AudioSource src;
+
+    Rigidbody2D rb;
+    bool jump = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        src = GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       var feet = new Vector2(transform.position.x, transform.position.y - 0.5f); 
+       var dimensions = new Vector2(0.8f, 0.1f);
+       var grounded = Physics2D.OverlapBox(feet, dimensions, 0, ground);
+
+       if (grounded)
+       {
+        jump = true;
+        
+       }
+    }
+
+
+
+void FixedUpdate()
+    {
+        if (jump)
+        {
+            jump = false;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            src.PlayOneShot(jumpSound);
+        }
+    }
+}
