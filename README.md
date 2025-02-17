@@ -1,4 +1,5 @@
 # The Adventures of Tree Game
+I attest that I did NOT use ChatGPT or any other automated writing system for ANY portion of this assignment.
 
 ## Summary
 This is a game I created in my game development class in early 2024. It is a 2D Mario-styled game, played in the perspective of your character, Tree. With some enemies to avoid and several levels to get through, this may prove to be a bit of a challenge. Through the use of Unity and the programming language C#, I was able to create a couple of 2D maps for my character to run through and complete, filled with AI bots to avoid and portals into each realm. Each one of these levels have their own theme, and will get harder as you progress. Below are the screenshots of each level. 
