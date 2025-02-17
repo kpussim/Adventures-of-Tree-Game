@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AIWalker : MonoBehaviour
+{
+
+    public float threshold = 3.0f;
+    public float speed = 1.0f;
+    GameObject player;
+    Rigidbody2D rb;
+
+    string state = "idle";
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (state == "idle") 
+        {
+            float distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+            if (distance < threshold) 
+            {
+                state = "attacking";
+
+            }
+
+        }
+
+        if (state == "attacking")
+        {
+            var velocity = rb.velocity;
+            if (player.transform.position.x < transform.position.x)
+            {
+                velocity.x = -speed;
+            } else 
+            {
+                rb.velocity = velocity;
+            }
+
+            rb.velocity = velocity;
+        }
+    }
+}
