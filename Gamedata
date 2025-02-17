@@ -1,0 +1,4 @@
+public class gamedata 
+{
+    public static int lives = 3;
+}
